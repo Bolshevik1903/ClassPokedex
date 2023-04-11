@@ -8,13 +8,12 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import pe.edu.upc.pokedex.Greeting
+import pe.edu.upc.pokedex.data.remote.Pokemon
 import pe.edu.upc.pokedex.ui.theme.PokedexTheme
 
 @Composable
-fun Pokemon() {
+fun Pokemon(pokemons: List<Pokemon>) {
     LazyColumn(){
-        val pokemons = arrayListOf<String>("Bagon","Shelgon", "Salamence")
         items(pokemons){
             PokemonItem(it)
         }
@@ -23,10 +22,10 @@ fun Pokemon() {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PokemonItem(pokemon: String) {
+fun PokemonItem(pokemon: Pokemon) {
     Card(onClick = { /*TODO*/ }) {
         Row() {
-            Text(text = pokemon)
+            Text(text = pokemon.name)
         }
     }
 }
@@ -35,6 +34,6 @@ fun PokemonItem(pokemon: String) {
 @Composable
 fun PokemonPreview() {
     PokedexTheme {
-        Pokemon()
+
     }
 }

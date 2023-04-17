@@ -29,7 +29,7 @@ fun Pokemon(pokemons: List<Pokemon>, selectPokemon: (String) -> Unit) {
 fun PokemonItem(pokemon: Pokemon, selectPokemon: (String) -> Unit) {
     Card(
         onClick = {
-            selectPokemon("373")
+            selectPokemon(getId(pokemon.url))
         }) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -38,6 +38,13 @@ fun PokemonItem(pokemon: Pokemon, selectPokemon: (String) -> Unit) {
             Text(text = pokemon.name)
         }
     }
+}
+
+fun getId(url: String): String {
+    val URL = url
+    val arr = URL.split("/")
+    val id = arr[arr.size - 2]
+    return id
 }
 
 @Preview(showBackground = true, showSystemUi = true)

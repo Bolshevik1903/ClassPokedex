@@ -11,6 +11,7 @@ import androidx.navigation.navArgument
 import pe.edu.upc.pokedex.data.remote.Pokemon
 import pe.edu.upc.pokedex.data.remote.PokemonClient
 import pe.edu.upc.pokedex.data.remote.PokemonResponse
+import pe.edu.upc.pokedex.data.remote.Sprites
 import pe.edu.upc.pokedex.ui.screens.pokemons.Pokemon
 import retrofit2.Call
 import retrofit2.Callback
@@ -54,8 +55,7 @@ fun Navigation() {
         ) {
             val index = it.arguments?.getString("index") as String
 
-
-            var pokemon = remember { mutableStateOf(Pokemon("",0,0))}
+            var pokemon = remember { mutableStateOf(Pokemon("",0,0,"",Sprites("")))}
 
             val pokemonInterface = PokemonClient.build()
             val getPokemon = pokemonInterface.getPokemon(index)
